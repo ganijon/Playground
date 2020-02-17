@@ -1,0 +1,13 @@
+C:\Users\sesa470971\source\Playground\Playground.Graph\obj\Debug\netstandard2.0\Playground.Graph.csprojAssemblyReference.cache
+C:\Users\sesa470971\source\Playground\Playground.Graph\obj\Debug\netstandard2.0\Playground.Graph.AssemblyInfoInputs.cache
+C:\Users\sesa470971\source\Playground\Playground.Graph\obj\Debug\netstandard2.0\Playground.Graph.AssemblyInfo.cs
+C:\Users\sesa470971\source\Playground\Playground.Graph\bin\Debug\netstandard2.0\Playground.Graph.deps.json
+C:\Users\sesa470971\source\Playground\Playground.Graph\bin\Debug\netstandard2.0\Playground.Graph.dll
+C:\Users\sesa470971\source\Playground\Playground.Graph\bin\Debug\netstandard2.0\Playground.Graph.pdb
+C:\Users\sesa470971\source\Playground\Playground.Graph\bin\Debug\netstandard2.0\Playground.Data.dll
+C:\Users\sesa470971\source\Playground\Playground.Graph\bin\Debug\netstandard2.0\Playground.Repository.dll
+C:\Users\sesa470971\source\Playground\Playground.Graph\bin\Debug\netstandard2.0\Playground.Data.pdb
+C:\Users\sesa470971\source\Playground\Playground.Graph\bin\Debug\netstandard2.0\Playground.Repository.pdb
+C:\Users\sesa470971\source\Playground\Playground.Graph\obj\Debug\netstandard2.0\Playground.Graph.csproj.CopyComplete
+C:\Users\sesa470971\source\Playground\Playground.Graph\obj\Debug\netstandard2.0\Playground.Graph.dll
+C:\Users\sesa470971\source\Playground\Playground.Graph\obj\Debug\netstandard2.0\Playground.Graph.pdb

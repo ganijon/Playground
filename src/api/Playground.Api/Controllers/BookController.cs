@@ -1,0 +1,32 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Playground.Data;
+using Playground.Repository;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+
+namespace Playground.Api.Controllers
+{
+    [ApiController]
+    [Route("[controller]")]
+    public class BookController : ControllerBase
+    {
+
+        private readonly ILogger<BookController> _logger;
+        private readonly IRepository _repository;
+
+        public BookController(IRepository repository, ILogger<BookController> logger)
+        {
+            _repository = repository;
+            _logger = logger;
+        }
+
+        [HttpGet]
+        public IEnumerable<Book> Get()
+        {
+            return _repository.Books.ToList();
+        }
+    }
+}

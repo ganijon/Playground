@@ -1,0 +1,11 @@
+C:\Users\sesa470971\source\Playground\Playground.Repository\bin\Debug\netstandard2.0\Playground.Repository.deps.json
+C:\Users\sesa470971\source\Playground\Playground.Repository\bin\Debug\netstandard2.0\Playground.Repository.dll
+C:\Users\sesa470971\source\Playground\Playground.Repository\bin\Debug\netstandard2.0\Playground.Repository.pdb
+C:\Users\sesa470971\source\Playground\Playground.Repository\bin\Debug\netstandard2.0\Playground.Data.dll
+C:\Users\sesa470971\source\Playground\Playground.Repository\bin\Debug\netstandard2.0\Playground.Data.pdb
+C:\Users\sesa470971\source\Playground\Playground.Repository\obj\Debug\netstandard2.0\Playground.Repository.csprojAssemblyReference.cache
+C:\Users\sesa470971\source\Playground\Playground.Repository\obj\Debug\netstandard2.0\Playground.Repository.AssemblyInfoInputs.cache
+C:\Users\sesa470971\source\Playground\Playground.Repository\obj\Debug\netstandard2.0\Playground.Repository.AssemblyInfo.cs
+C:\Users\sesa470971\source\Playground\Playground.Repository\obj\Debug\netstandard2.0\Playground.Repository.csproj.CopyComplete
+C:\Users\sesa470971\source\Playground\Playground.Repository\obj\Debug\netstandard2.0\Playground.Repository.dll
+C:\Users\sesa470971\source\Playground\Playground.Repository\obj\Debug\netstandard2.0\Playground.Repository.pdb

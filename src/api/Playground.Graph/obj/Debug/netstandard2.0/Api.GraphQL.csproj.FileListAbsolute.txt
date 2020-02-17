@@ -1,0 +1,13 @@
+C:\Users\sesa470971\source\Api\Api.GraphQL\bin\Debug\netstandard2.0\Api.GraphQL.deps.json
+C:\Users\sesa470971\source\Api\Api.GraphQL\bin\Debug\netstandard2.0\Api.GraphQL.dll
+C:\Users\sesa470971\source\Api\Api.GraphQL\bin\Debug\netstandard2.0\Api.Data.dll
+C:\Users\sesa470971\source\Api\Api.GraphQL\bin\Debug\netstandard2.0\Api.Data.pdb
+C:\Users\sesa470971\source\Api\Api.GraphQL\obj\Debug\netstandard2.0\Api.GraphQL.csprojAssemblyReference.cache
+C:\Users\sesa470971\source\Api\Api.GraphQL\obj\Debug\netstandard2.0\Api.GraphQL.AssemblyInfoInputs.cache
+C:\Users\sesa470971\source\Api\Api.GraphQL\obj\Debug\netstandard2.0\Api.GraphQL.AssemblyInfo.cs
+C:\Users\sesa470971\source\Api\Api.GraphQL\obj\Debug\netstandard2.0\Api.GraphQL.csproj.CopyComplete
+C:\Users\sesa470971\source\Api\Api.GraphQL\bin\Debug\netstandard2.0\Api.GraphQL.pdb
+C:\Users\sesa470971\source\Api\Api.GraphQL\obj\Debug\netstandard2.0\Api.GraphQL.dll
+C:\Users\sesa470971\source\Api\Api.GraphQL\obj\Debug\netstandard2.0\Api.GraphQL.pdb
+C:\Users\sesa470971\source\Api\Api.GraphQL\bin\Debug\netstandard2.0\Api.Repository.dll
+C:\Users\sesa470971\source\Api\Api.GraphQL\bin\Debug\netstandard2.0\Api.Repository.pdb

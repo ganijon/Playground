@@ -1,0 +1,7 @@
+C:\Users\sesa470971\source\Api\Api.Data\bin\Debug\netstandard2.0\Api.Data.deps.json
+C:\Users\sesa470971\source\Api\Api.Data\bin\Debug\netstandard2.0\Api.Data.dll
+C:\Users\sesa470971\source\Api\Api.Data\bin\Debug\netstandard2.0\Api.Data.pdb
+C:\Users\sesa470971\source\Api\Api.Data\obj\Debug\netstandard2.0\Api.Data.AssemblyInfoInputs.cache
+C:\Users\sesa470971\source\Api\Api.Data\obj\Debug\netstandard2.0\Api.Data.AssemblyInfo.cs
+C:\Users\sesa470971\source\Api\Api.Data\obj\Debug\netstandard2.0\Api.Data.dll
+C:\Users\sesa470971\source\Api\Api.Data\obj\Debug\netstandard2.0\Api.Data.pdb
