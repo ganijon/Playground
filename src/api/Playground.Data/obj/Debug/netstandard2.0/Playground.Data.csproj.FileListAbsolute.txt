@@ -1,8 +1,0 @@
-C:\Users\sesa470971\source\Playground\Playground.Data\bin\Debug\netstandard2.0\Playground.Data.deps.json
-C:\Users\sesa470971\source\Playground\Playground.Data\bin\Debug\netstandard2.0\Playground.Data.dll
-C:\Users\sesa470971\source\Playground\Playground.Data\bin\Debug\netstandard2.0\Playground.Data.pdb
-C:\Users\sesa470971\source\Playground\Playground.Data\obj\Debug\netstandard2.0\Playground.Data.csprojAssemblyReference.cache
-C:\Users\sesa470971\source\Playground\Playground.Data\obj\Debug\netstandard2.0\Playground.Data.AssemblyInfoInputs.cache
-C:\Users\sesa470971\source\Playground\Playground.Data\obj\Debug\netstandard2.0\Playground.Data.AssemblyInfo.cs
-C:\Users\sesa470971\source\Playground\Playground.Data\obj\Debug\netstandard2.0\Playground.Data.dll
-C:\Users\sesa470971\source\Playground\Playground.Data\obj\Debug\netstandard2.0\Playground.Data.pdb
