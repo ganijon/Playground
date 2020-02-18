@@ -1,11 +1,7 @@
-﻿using Playground.Data;
-using Playground.Graph.Schema.Types;
+﻿using Playground.Graph.Schema.Types;
 using Playground.Repository;
 using GraphQL.Types;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Playground.Graph.Schema.Queries
 {
@@ -15,13 +11,7 @@ namespace Playground.Graph.Schema.Queries
         {
             Name = "Query";
 
-            // Expose all authors
-            Field<ListGraphType<AuthorType>>("Authors", resolve: context => { return repository.Authors; });
-
-            // Expose all authors
-            Field<ListGraphType<BookType>>("Books", resolve: context => { return repository.Books; });
-
-            // Expose an author
+            // Expose author by id
             Field<AuthorType>("Author",
                 arguments: new QueryArguments(new QueryArgument<IdGraphType> { Name = "id" }),
                 resolve: context =>
@@ -30,8 +20,7 @@ namespace Playground.Graph.Schema.Queries
                     return repository.Authors.FirstOrDefault(x => x.Id == id);
                 });
 
-
-            // Expose a book
+            // Expose a book by id
             Field<BookType>("Book",
                 arguments: new QueryArguments(new QueryArgument<IdGraphType> { Name = "id" }),
                 resolve: context =>
@@ -39,6 +28,31 @@ namespace Playground.Graph.Schema.Queries
                     var id = context.GetArgument<int>("id");
                     return repository.Books.FirstOrDefault(x => x.Id == id);
                 });
+
+
+            // Expose all authors filtered name substring
+            Field<ListGraphType<AuthorType>>("Authors",
+                arguments: new QueryArguments(new QueryArgument<StringGraphType> { Name = "name" }),
+                resolve: context =>
+                {
+                    var searchString = context.GetArgument<string>("name");
+                    return (searchString != default)
+                        ? repository.Authors.Where(x => x.Name.ToLower().Contains(searchString.ToLower()))
+                        : repository.Authors;
+                });
+
+            // Expose all books filtered name substring
+            Field<ListGraphType<BookType>>("Books",
+                arguments: new QueryArguments(new QueryArgument<StringGraphType> { Name = "name" }),
+                resolve: context =>
+                {
+                    var searchString = context.GetArgument<string>("name");
+                    return (searchString != default)
+                        ? repository.Books.Where(x => x.Name.ToLower().Contains(searchString.ToLower()))
+                        : repository.Books;
+                });
+
+
         }
     }
 }
