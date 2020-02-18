@@ -18,24 +18,24 @@ namespace Playground.Graph.Services
     public class BookService : IBookService
     {
         private readonly IRepository _repository;
-        private readonly ISubject<Book> _sub;
+        private readonly ISubject<Book> _subject;
 
         public BookService(IRepository repository)
         {
             _repository = repository;
-            _sub = new ReplaySubject<Book>(1);
+            _subject = new ReplaySubject<Book>(1);
         }
 
         public Book Create(Book obj)
         {
             _repository.Add(obj);
-            _sub.OnNext(obj);
+            _subject.OnNext(obj);
             return obj;
         }
 
         public IObservable<Book> BookAdded()
         {
-            return _sub.AsObservable();
+            return _subject.AsObservable();
         }
     }
 }
