@@ -1,7 +1,7 @@
-import { Book } from '../books/book';
+// import { Book } from '../books/book';
 
 export interface Author {
   id: number;
   name: string;
-  books: Book[];
+  // books: Book[];
 }

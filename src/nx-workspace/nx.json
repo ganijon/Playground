@@ -17,6 +17,9 @@
     "bookstore-e2e": {
       "tags": [],
       "implicitDependencies": ["bookstore"]
+    },
+    "books-ui": {
+      "tags": []
     }
   }
 }

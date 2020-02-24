@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
@@ -11,9 +11,10 @@ const appRoutes: Routes = [
   },
   {
     path: 'books',
-    loadChildren: () => import('./books/books.module').then(m => m.BooksModule)
+    loadChildren: () =>
+      import('@nx-playground/books-ui').then(m => m.BooksUiModule)
   },
-  { path: '', component: HomeComponent },
+  { path: '', pathMatch: 'full', component: HomeComponent },
   { path: '**', component: NotFoundComponent }
 ];
 
