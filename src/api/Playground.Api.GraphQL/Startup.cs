@@ -15,7 +15,7 @@ using Playground.Graph.Schema.Types;
 using Playground.Graph.Services;
 using Playground.Repository;
 
-namespace Playground.Api
+namespace Playground.Api.GraphQL
 {
     public class Startup
     {
@@ -33,7 +33,7 @@ namespace Playground.Api
             services.AddCors();
 
             // Repository of mock data
-            services.AddSingleton<IRepository, MockRestApiRepository>();
+            services.AddSingleton<IRepository, MockGraphQLApiRepository>();
 
             // Services
             services.AddSingleton<IAuthorService, AuthorService>();
@@ -41,9 +41,6 @@ namespace Playground.Api
 
             // GraphQL endpoints
             ConfigureGraphQL(services);
-
-            // REST endpoints
-            services.AddControllers();
         }
 
         private void ConfigureGraphQL(IServiceCollection services)
@@ -123,12 +120,12 @@ namespace Playground.Api
             // Enable developer UI
             app.UseGraphiQLServer(new GraphiQLOptions { GraphiQLPath = "/ui" });
 
-            app.UseRouting();
+            //app.UseRouting();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapControllers();
+            //});
         }
     }
 }

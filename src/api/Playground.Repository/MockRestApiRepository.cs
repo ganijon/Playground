@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Playground.Repository
 {
-    public class MockRepository : IRepository
+    public class MockRestApiRepository : IRepository
     {
         public IQueryable<Author> Authors => mockAuthors.AsQueryable();
 

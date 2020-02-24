@@ -1,7 +1,5 @@
 ﻿using Playground.Data;
 using GraphQL.Types;
-using System;
-using System.Collections.Generic;
 
 namespace Playground.Graph.Schema.Types
 {
@@ -17,6 +15,7 @@ namespace Playground.Graph.Schema.Types
             Field(x => x.Genre).Description("Book genre");
             Field(x => x.Published).Description("If the book is published or not");
             Field(x => x.AuthorId).Description("Book's author id");
+            Field(x => x.Author, type: typeof(AuthorType)).Description("Book's author");
         }
     }
 }

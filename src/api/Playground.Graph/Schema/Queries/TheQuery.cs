@@ -36,6 +36,8 @@ namespace Playground.Graph.Schema.Queries
                 resolve: context =>
                 {
                     var searchString = context.GetArgument<string>("name");
+                    var list = repository.Authors.ToList();
+
                     return (searchString != default)
                         ? repository.Authors.Where(x => x.Name.ToLower().Contains(searchString.ToLower()))
                         : repository.Authors;

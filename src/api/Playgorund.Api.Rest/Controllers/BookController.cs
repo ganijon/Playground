@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Playground.Data;
 using Playground.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace Playground.Api.Controllers
+namespace Playground.Api.Rest.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
