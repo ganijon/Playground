@@ -1,0 +1,152 @@
+{
+  "version": 1,
+  "projects": {
+    "bookstore": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/bookstore",
+      "sourceRoot": "apps/bookstore/src",
+      "prefix": "nx-playground",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/bookstore",
+            "index": "apps/bookstore/src/index.html",
+            "main": "apps/bookstore/src/main.ts",
+            "polyfills": "apps/bookstore/src/polyfills.ts",
+            "tsConfig": "apps/bookstore/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/bookstore/src/favicon.ico",
+              "apps/bookstore/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "apps/bookstore/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/bookstore/src/environments/environment.ts",
+                  "with": "apps/bookstore/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "bookstore:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "bookstore:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "bookstore:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/bookstore/tsconfig.app.json",
+              "apps/bookstore/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/bookstore/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/bookstore/jest.config.js",
+            "tsConfig": "apps/bookstore/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "apps/bookstore/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "bookstore-e2e": {
+      "root": "apps/bookstore-e2e",
+      "sourceRoot": "apps/bookstore-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/bookstore-e2e/cypress.json",
+            "tsConfig": "apps/bookstore-e2e/tsconfig.e2e.json",
+            "devServerTarget": "bookstore:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "bookstore:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/bookstore-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/bookstore-e2e/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "bookstore"
+}

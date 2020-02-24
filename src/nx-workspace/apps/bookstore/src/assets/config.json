@@ -1,0 +1,5 @@
+{
+    "graphqlUrl": "graphql",
+    "booksRestUrl": "api/book",
+    "authorRestUrl": "api/author"
+}
