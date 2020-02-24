@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Apollo, QueryRef } from 'apollo-angular';
 import gql from 'graphql-tag';
-import { Book } from './book';
+import { Author } from './author';
 import { FormControl } from '@angular/forms';
 
-const BOOKS_QUERY = gql`
-  query Books($name: String) {
-    books(name: $name) {
+const authors_QUERY = gql`
+  query authors($name: String) {
+    authors(name: $name) {
       id
       name
-      genre
-      author {
+      books {
         name
       }
     }
@@ -18,26 +17,26 @@ const BOOKS_QUERY = gql`
 `;
 
 @Component({
-  selector: 'nx-playground-books',
-  templateUrl: './books.component.html',
-  styleUrls: ['./books.component.scss']
+  selector: 'nx-playground-authors',
+  templateUrl: './authors.component.html',
+  styleUrls: ['./authors.component.scss']
 })
-export class BooksComponent implements OnInit {
-  books: Book[] = [];
+export class AuthorsComponent implements OnInit {
+  authors: Author[] = [];
   searchTerm = new FormControl();
 
-  private query: QueryRef<Book[]>;
+  private query: QueryRef<Author[]>;
 
   constructor(private apollo: Apollo) {}
 
   ngOnInit() {
     this.query = this.apollo.watchQuery({
-      query: BOOKS_QUERY,
+      query: authors_QUERY,
       variables: { name: '' }
     });
 
     this.query.valueChanges.subscribe(result => {
-      this.books = result.data && result.data['books'];
+      this.authors = result.data && result.data['authors'];
     });
   }
 

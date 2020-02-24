@@ -1,0 +1,15 @@
+  <mat-form-field>
+    <mat-label>Search authors</mat-label>
+    <input matInput placeholder="Search" 
+      [formControl]="searchTerm"
+      (change)="onSearch()"
+    >
+
+<mat-nav-list>
+  <mat-list-item *ngFor="let author of authors">
+    <a matLine href="author\{{ author.id }}">{{ author.name }}</a>
+    <span matLine>
+      <span *ngFor="let book of author.books">{{book.name}}, </span>
+    </span>
+  </mat-list-item>
+</mat-nav-list>
