@@ -9,15 +9,15 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { HomeComponent } from './home/home.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-
-import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { GraphQLModule } from './graphql.module';
 import { ApolloModule } from 'apollo-angular';
 
+import { AppRoutingModule } from './app-routing.module';
 import { BooksUiModule } from '@nx-playground/books-ui';
+
+import { HomeComponent } from './home/home.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, NotFoundComponent],
@@ -31,7 +31,6 @@ import { BooksUiModule } from '@nx-playground/books-ui';
     MatListModule,
     MatButtonModule,
     MatIconModule,
-    MatCardModule,
     HttpClientModule,
     ApolloModule,
     GraphQLModule,

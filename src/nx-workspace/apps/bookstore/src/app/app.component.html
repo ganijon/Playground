@@ -1,22 +1,15 @@
 <mat-toolbar color="primary">
-  
-  <mat-toolbar-row>
-    
-    <span>BookStore</span>
 
-    <span class="menu-spacer"></span>
-  
-    <div>
-      <a mat-button [routerLink]="'/books'"> Books </a>
-      <a mat-button [routerLink]="'/authors'"> Authors </a>
-      <a mat-button [routerLink]="'/publishers'"> Publishers </a>
-    </div>
-  
-  </mat-toolbar-row>
-
+  <button mat-button [routerLink]="''"><mat-icon>menu</mat-icon></button>
+  <span> Book Store</span>  
+  <span class="menu-spacer"></span>
+  <button mat-button [routerLink]="'/authors'"> Authors </button>
+  <button mat-button [routerLink]="'/books'"> Books </button>
+  <button mat-button [routerLink]="'/settings'"><mat-icon>settings</mat-icon></button>
 </mat-toolbar>
 
 <router-outlet> </router-outlet>
+
 
 
 
