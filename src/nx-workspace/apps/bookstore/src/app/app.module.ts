@@ -31,6 +31,7 @@ import { BooksUiModule } from '@nx-playground/books-ui';
     MatListModule,
     MatButtonModule,
     MatIconModule,
+    MatCardModule,
     HttpClientModule,
     ApolloModule,
     GraphQLModule,

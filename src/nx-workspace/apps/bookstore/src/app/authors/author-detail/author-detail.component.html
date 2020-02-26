@@ -1,0 +1,21 @@
+
+<form *ngIf="author$ | async as author">
+
+  <mat-form-field appearance="standard">
+    <mat-label>Author Id</mat-label>
+    <input matInput disabled value="{{author.id}}">
+  </mat-form-field>
+
+  <mat-form-field appearance="standard">
+    <mat-label>Author Name</mat-label>
+    <input matInput disabled value="{{author.name}}">
+  </mat-form-field>
+
+    <mat-nav-list>
+      <mat-list-item *ngFor="let book of author.books">
+        <a matLine href="books\{{ book.id }}">{{ book.name }}</a>
+      </mat-list-item>
+    </mat-nav-list>
+  
+
+</form>
