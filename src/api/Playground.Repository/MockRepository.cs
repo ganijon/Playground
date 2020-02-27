@@ -1,16 +1,19 @@
 ﻿using Playground.Data;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Playground.Repository
 {
-    public class MockRestApiRepository : IRepository
+    public class MockRepository : IRepository
     {
-        public IQueryable<Author> Authors => mockAuthors.AsQueryable();
+        public IQueryable<Author> Authors => mockAuthors
+            .SelectMany(a => a.Books.Select(b => b.Author = a))
+            .Distinct()
+            .AsQueryable();
 
-        public IQueryable<Book> Books => mockAuthors.SelectMany(x => x.Books).AsQueryable();
+        public IQueryable<Book> Books => Authors
+            .SelectMany(a => a.Books)
+            .AsQueryable();
 
         public Author Add(Author author)
         {
@@ -65,7 +68,18 @@ namespace Playground.Repository
                     new Book { Name = "Crime and Punishment", Id = 6, AuthorId = 3, Genre = "Psychological fiction", Published = true },
                     new Book { Name = "The Gambler", Id = 7, AuthorId = 3, Genre = "Novel", Published = true },
                 }
-            }
+            },
+
+             new Author {
+                Name = "Vladimir Nabokov",
+                Id = 4,
+                Books  = new List<Book>
+                {
+                    new Book { Name = "Lolita", Id = 8, AuthorId = 4, Genre = "Novel, Fiction, Romance novel, Tragicomedy", Published = true },
+                    new Book { Name = "Pale Fire", Id = 9, AuthorId = 4, Genre = "Novel, Fiction, Experimental literature", Published = true },
+                }
+            },
+
         };
         #endregion
     }

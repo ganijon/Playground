@@ -1,12 +1,18 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using GraphQL;
 using GraphQL.Server;
 using GraphQL.Server.Ui.GraphiQL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json;
 using Playground.Graph.Schema;
 using Playground.Graph.Schema.Mutations;
 using Playground.Graph.Schema.Queries;
@@ -15,7 +21,7 @@ using Playground.Graph.Schema.Types;
 using Playground.Graph.Services;
 using Playground.Repository;
 
-namespace Playground.Api.GraphQL
+namespace Playground.Api
 {
     public class Startup
     {
@@ -38,6 +44,13 @@ namespace Playground.Api.GraphQL
             // Services
             services.AddSingleton<IAuthorService, AuthorService>();
             services.AddSingleton<IBookService, BookService>();
+
+            // REST endpoints
+            services.AddControllers()
+                .AddNewtonsoftJson(options => 
+                { 
+                    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore; 
+                });
 
             // GraphQL endpoints
             ConfigureGraphQL(services);
@@ -90,7 +103,6 @@ namespace Playground.Api.GraphQL
                 options.EnableMetrics = true;
                 options.ExposeExceptions = true;
             }).AddWebSockets();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -120,12 +132,12 @@ namespace Playground.Api.GraphQL
             // Enable developer UI
             app.UseGraphiQLServer(new GraphiQLOptions { GraphiQLPath = "/ui" });
 
-            //app.UseRouting();
+            app.UseRouting();
 
-            //app.UseEndpoints(endpoints =>
-            //{
-            //    endpoints.MapControllers();
-            //});
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
     }
 }
