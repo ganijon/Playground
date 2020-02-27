@@ -43,6 +43,20 @@ namespace Playground.Graph.Schema.Queries
                         : repository.Authors;
                 });
 
+            // Expose all authors filtered name substring
+            Field<ListGraphType<PublisherType>>("Publishers",
+                arguments: new QueryArguments(new QueryArgument<StringGraphType> { Name = "name" }),
+                resolve: context =>
+                {
+                    var searchString = context.GetArgument<string>("name");
+                    var list = repository.Publishers.ToList();
+
+                    return (searchString != default)
+                        ? repository.Publishers.Where(x => x.Name.ToLower().Contains(searchString.ToLower()))
+                        : repository.Publishers;
+                });
+
+
             // Expose all books filtered name substring
             Field<ListGraphType<BookType>>("Books",
                 arguments: new QueryArguments(new QueryArgument<StringGraphType> { Name = "name" }),

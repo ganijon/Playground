@@ -6,13 +6,46 @@ namespace Playground.Repository
 {
     public class MockRepository : IRepository
     {
-        public IQueryable<Author> Authors => mockAuthors
-            .SelectMany(a => a.Books.Select(b => b.Author = a))
-            .Distinct()
+        public IQueryable<Author> Authors =>
+            (
+                from author in mockAuthors
+                join book in mockBooks on author.Id equals book.AuthorId into books
+                select new Author
+                {
+                    Id = author.Id,
+                    Name = author.Name,
+                    Books = books
+                }
+            )
             .AsQueryable();
 
-        public IQueryable<Book> Books => Authors
-            .SelectMany(a => a.Books)
+        public IQueryable<Publisher> Publishers =>
+            (
+                from publisher in mockPublishers
+                join book in mockBooks on publisher.Id equals book.PublisherId into books
+                select new Publisher
+                {
+                    Id = publisher.Id,
+                    Name = publisher.Name,
+                    Books = books
+                }
+            )
+            .AsQueryable();
+
+        public IQueryable<Book> Books =>
+            (
+                from book in mockBooks
+                join author in mockAuthors on book.AuthorId equals author.Id
+                join publisher in mockPublishers on book.PublisherId equals publisher.Id
+                select new Book
+                {
+                    Id = book.Id,
+                    Name = book.Name,
+                    Genre = book.Genre,
+                    Author = author,
+                    Publisher = publisher
+                }
+            )
             .AsQueryable();
 
         public Author Add(Author author)
@@ -32,55 +65,46 @@ namespace Playground.Repository
 
             book.Id = bookAuthor.Books.Count() + 1;
 
-            bookAuthor.Books.Add(book);
+            (bookAuthor.Books as List<Book>).Add(book);
             return book;
         }
 
         #region Mock Data
         private List<Author> mockAuthors = new List<Author>
         {
-            new Author {
-                Name = "James Joyce",
-                Id = 1,
-                Books  = new List<Book>
-                {
-                    new Book { Name = "Ulysses", Id = 1, AuthorId = 1, Genre = "Modernist novel", Published = true },
-                    new Book { Name = "Dubliners", Id = 2, AuthorId = 1, Genre = "Short story", Published = true },
-                }
-            },
-
-            new Author {
-                Name = "Leo Tolstoy",
-                Id = 2,
-                Books  = new List<Book>
-                {
-                    new Book { Name = "War and Peace", Id = 3, AuthorId = 2, Genre = "Historical novel", Published = true },
-                    new Book { Name = "Anna Karenina", Id = 4, AuthorId = 2, Genre = "Realist novel", Published = true },
-                    new Book { Name = "The Cossacks", Id = 5, AuthorId = 2, Genre = "Fiction", Published = true },
-                }
-            },
-
-             new Author {
-                Name = "Fyodor Dostoyevsky",
-                Id = 3,
-                Books  = new List<Book>
-                {
-                    new Book { Name = "Crime and Punishment", Id = 6, AuthorId = 3, Genre = "Psychological fiction", Published = true },
-                    new Book { Name = "The Gambler", Id = 7, AuthorId = 3, Genre = "Novel", Published = true },
-                }
-            },
-
-             new Author {
-                Name = "Vladimir Nabokov",
-                Id = 4,
-                Books  = new List<Book>
-                {
-                    new Book { Name = "Lolita", Id = 8, AuthorId = 4, Genre = "Novel, Fiction, Romance novel, Tragicomedy", Published = true },
-                    new Book { Name = "Pale Fire", Id = 9, AuthorId = 4, Genre = "Novel, Fiction, Experimental literature", Published = true },
-                }
-            },
-
+            new Author { Id = 1, Name = "James Joyce" },
+            new Author { Id = 2, Name = "Leo Tolstoy" },
+            new Author { Id = 3, Name = "Fyodor Dostoyevsky" },
+            new Author { Id = 4, Name = "Vladimir Nabokov" }
         };
+
+        private List<Publisher> mockPublishers = new List<Publisher>
+        {
+            new Publisher { Id = 1, Name = "McGraw-Hill" },
+            new Publisher { Id = 2, Name = "Elliot Stock" },
+            new Publisher { Id = 3, Name = "Elsevier" },
+            new Publisher { Id = 4, Name = "Penguin Classics" },
+            new Publisher { Id = 5, Name = "Atlantic Books" },
+            new Publisher { Id = 6, Name = "Kensington Books" },
+            new Publisher { Id = 7, Name = "Hackett Publishing Company" },
+            new Publisher { Id = 8, Name = "Hawthorne Books" },
+            new Publisher { Id = 9, Name = "O'Reilly Media" },
+        };
+
+        private List<Book> mockBooks = new List<Book>
+        {
+            new Book { Id = 1, Name = "Ulysses",                Genre = "Modernist novel",       AuthorId = 1, PublisherId = 1 },
+            new Book { Id = 2, Name = "Dubliners",              Genre = "Short story",           AuthorId = 1, PublisherId = 2 },
+            new Book { Id = 3, Name = "War and Peace",          Genre = "Historical novel",      AuthorId = 2, PublisherId = 3 },
+            new Book { Id = 4, Name = "Anna Karenina",          Genre = "Realist novel",         AuthorId = 2, PublisherId = 3 },
+            new Book { Id = 5, Name = "The Cossacks",           Genre = "Fiction",               AuthorId = 2, PublisherId = 4 },
+            new Book { Id = 6, Name = "Crime and Punishment",   Genre = "Psychological fiction", AuthorId = 3, PublisherId = 5 },
+            new Book { Id = 7, Name = "The Gambler",            Genre = "Novel",                 AuthorId = 3, PublisherId = 6 },
+            new Book { Id = 8, Name = "The Devils",             Genre = "Novel",                 AuthorId = 3, PublisherId = 4 },
+            new Book { Id = 9, Name = "Lolita",                 Genre = "Romance novel",         AuthorId = 4, PublisherId = 7 },
+            new Book { Id = 10, Name = "Pale Fire",             Genre = "Novel, Fiction",        AuthorId = 4, PublisherId = 8 },
+        };
+
         #endregion
     }
 }

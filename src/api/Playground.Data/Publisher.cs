@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Playground.Data
 {
-    public class Author
+    public class Publisher
     {
         public int Id { get; set; }
         public string Name { get; set; }

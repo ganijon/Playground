@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Playground.Data
+﻿namespace Playground.Data
 {
     public class Book
     {
@@ -9,12 +6,12 @@ namespace Playground.Data
 
         public string Name { get; set; }
 
-        public bool Published { get; set; }
-
         public string Genre { get; set; }
 
         public int AuthorId { get; set; }
-
         public Author Author { get; set; }
+
+        public int PublisherId { get; set; }
+        public Publisher Publisher { get; set; }
     }
 }

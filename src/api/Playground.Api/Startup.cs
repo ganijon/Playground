@@ -95,6 +95,7 @@ namespace Playground.Api
 
             // Types
             services.AddSingleton<AuthorType>();
+            services.AddSingleton<PublisherType>();
             services.AddSingleton<BookType>();
 
             // Register GraphQL services
