@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BookListComponent } from './books/book-list/book-list.component';
 import { BookService } from './books/book.service';
 import { BookDetailComponent } from './books/book-detail/book-detail.component';
+import { SharedLibModule } from '@nx-playground/shared-lib';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { BookDetailComponent } from './books/book-detail/book-detail.component';
     MatIconModule,
     MatListModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedLibModule
   ],
   declarations: [BookListComponent, BookDetailComponent],
   exports: [BookListComponent, BookDetailComponent],

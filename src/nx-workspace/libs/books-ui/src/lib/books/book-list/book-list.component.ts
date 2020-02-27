@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { Book } from '../book';
 import { BookService } from '../book.service';
-import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'nx-playground-book-list',
@@ -12,15 +10,11 @@ import { FormControl } from '@angular/forms';
 })
 export class BookListComponent implements OnInit {
   books$: Observable<Book[]>;
-  searchTerm: FormControl;
+  searchText: string;
 
   constructor(private service: BookService) {}
 
   ngOnInit(): void {
     this.books$ = this.service.getBooks();
-  }
-
-  onSearch() {
-    this.service.search(this.searchTerm.value);
   }
 }

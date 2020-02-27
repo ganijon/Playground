@@ -20,6 +20,9 @@
     },
     "books-ui": {
       "tags": []
+    },
+    "shared-lib": {
+      "tags": []
     }
   }
 }

@@ -16,7 +16,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@nx-playground/books-ui": ["libs/books-ui/src/index.ts"]
+      "@nx-playground/books-ui": ["libs/books-ui/src/index.ts"],
+      "@nx-playground/shared-lib": ["libs/shared-lib/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
