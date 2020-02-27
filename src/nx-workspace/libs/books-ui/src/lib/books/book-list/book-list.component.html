@@ -1,10 +1,12 @@
-<div class="example-container">
-    <mat-form-field>
-        <mat-label>Search Books</mat-label>
-        <input matInput placeholder="Search" [formControl]="searchTerm" (change)="onSearch()">
+<form class="example-container">
+  <mat-form-field>
+      <mat-label>Search books</mat-label>
+      <input matInput placeholder="Search" [formControl]="searchTerm" (change)="onSearch()">
+  </mat-form-field>
 
-    <mat-nav-list>
-        <mat-list-item *ngFor="let book of books$ | async">
-            <a matLine [routerLink]="['/books', book.id]">{{ book.name }}</a>
-        </mat-list-item>
-    </mat-nav-list>
+  <mat-nav-list>
+    <mat-list-item *ngFor="let book of books$ | async">
+      <a matLine [routerLink]="['/books', book.id]"> {{ book.name }} </a>
+    </mat-list-item>
+  </mat-nav-list>
+</form>
