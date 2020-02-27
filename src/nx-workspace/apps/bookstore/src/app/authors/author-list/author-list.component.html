@@ -1,14 +1,14 @@
-<form class="example-container">
+<div class="example-container">
   <mat-form-field>
       <mat-label>Search authors</mat-label>
-      <input matInput placeholder="Search" [formControl]="searchTerm" (change)="onSearch()">
+      <input matInput placeholder="Search" [(ngModel)]="searchText">
   </mat-form-field>
 
   <mat-nav-list>
-    <mat-list-item *ngFor="let author of authors$ | async">
+    <mat-list-item *ngFor="let author of authors$ | async | nameFilter: searchText">
       <a matLine [routerLink]="['/authors', author.id]"> {{ author.name }} </a>
     </mat-list-item>
   </mat-nav-list>
-</form>
+</div>
 
 <mat-divider></mat-divider>

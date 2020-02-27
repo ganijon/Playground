@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthorsRoutingModule } from './authors-routing.module';
 import { AuthorListComponent } from './author-list/author-list.component';
 import { AuthorDetailComponent } from './author-detail/author-detail.component';
+import { SharedLibModule } from '@nx-playground/shared-lib';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { AuthorDetailComponent } from './author-detail/author-detail.component';
     MatListModule,
     MatCardModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedLibModule
   ],
   declarations: [AuthorListComponent, AuthorDetailComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

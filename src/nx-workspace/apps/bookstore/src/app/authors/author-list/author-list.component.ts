@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { AuthorService } from '../author.service';
 import { Author } from '../author';
-import { Observable } from 'rxjs';
-import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'nx-playground-author-list',
@@ -12,15 +11,11 @@ import { FormControl } from '@angular/forms';
 })
 export class AuthorListComponent implements OnInit {
   authors$: Observable<Author[]>;
-  searchTerm = new FormControl();
+  searchText: string;
 
   constructor(private service: AuthorService) {}
 
   ngOnInit() {
     this.authors$ = this.service.getAuthors();
-  }
-
-  onSearch() {
-    this.service.search(this.searchTerm.value);
   }
 }
