@@ -1,14 +1,16 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BooksComponent } from './books/books.component';
 import { BooksRoutingModule } from './books/books-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Book } from './books/book';
+import { BookListComponent } from './books/book-list/book-list.component';
+import { BookService } from './books/book.service';
+import { BookDetailComponent } from './books/book-detail/book-detail.component';
 
 @NgModule({
   imports: [
@@ -18,12 +20,14 @@ import { Book } from './books/book';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatIconModule,
     MatListModule,
     FormsModule,
     ReactiveFormsModule
   ],
-  declarations: [BooksComponent],
-  exports: [BooksComponent],
+  declarations: [BookListComponent, BookDetailComponent],
+  exports: [BookListComponent, BookDetailComponent],
+  providers: [BookService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class BooksUiModule {}

@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { Apollo, QueryRef } from 'apollo-angular';
 import gql from 'graphql-tag';
 
 import { Author } from './author';
-import { map } from 'rxjs/operators';
 
-const AUTHOR_LIST_QUERY = gql`
+const AUTHORS_QUERY = gql`
   query authors($name: String) {
     authors(name: $name) {
       id
@@ -23,28 +23,28 @@ const AUTHOR_LIST_QUERY = gql`
   providedIn: 'root'
 })
 export class AuthorService {
-  authorList$: Observable<Author[]>;
+  authors$: Observable<Author[]>;
 
-  private queryList: QueryRef<Author[]>;
+  private query: QueryRef<Author[]>;
 
   constructor(private apollo: Apollo) {
-    this.queryList = this.apollo.watchQuery({
-      query: AUTHOR_LIST_QUERY,
+    this.query = this.apollo.watchQuery({
+      query: AUTHORS_QUERY,
       variables: { name: '' }
     });
 
-    this.authorList$ = this.queryList.valueChanges.pipe(
+    this.authors$ = this.query.valueChanges.pipe(
       map(result => result.data && result.data['authors'])
     );
   }
 
   getAuthor(authorId: string) {
-    return this.authorList$.pipe(
-      map((authors: Author[]) => authors.find(author => author.id === authorId))
+    return this.authors$.pipe(
+      map((authors: Author[]) => authors.find(a => a.id === authorId))
     );
   }
 
   search(searchTerm: string) {
-    this.queryList.refetch({ name: searchTerm });
+    this.query.refetch({ name: searchTerm });
   }
 }

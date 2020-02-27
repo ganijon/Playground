@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { switchMap } from 'rxjs/operators';
-import { ActivatedRoute } from '@angular/router';
 
 import { AuthorService } from '../author.service';
 import { Author } from '../author';
@@ -14,18 +12,12 @@ import { FormControl } from '@angular/forms';
 })
 export class AuthorListComponent implements OnInit {
   authors$: Observable<Author[]>;
-  selectedId: number;
   searchTerm = new FormControl();
 
-  constructor(private service: AuthorService, private route: ActivatedRoute) {}
+  constructor(private service: AuthorService) {}
 
   ngOnInit() {
-    this.authors$ = this.route.paramMap.pipe(
-      switchMap(params => {
-        this.selectedId = +params.get('id');
-        return this.service.authorList$;
-      })
-    );
+    this.authors$ = this.service.authors$;
   }
 
   onSearch() {
