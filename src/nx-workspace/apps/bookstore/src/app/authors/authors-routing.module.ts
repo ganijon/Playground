@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthorsComponent } from './authors.component';
+import { AuthorListComponent } from './author-list/author-list.component';
+import { AuthorDetailComponent } from './author-detail/author-detail.component';
 
 const authorsRoutes: Routes = [
   {
     path: '',
-    component: AuthorsComponent,
+    component: AuthorListComponent,
     data: { animation: 'authors' }
   },
   {
     path: ':id',
-    component: AuthorsComponent,
+    component: AuthorDetailComponent,
     data: { animation: 'authors' }
   }
 ];

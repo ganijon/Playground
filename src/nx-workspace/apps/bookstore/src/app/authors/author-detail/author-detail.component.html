@@ -1,3 +1,7 @@
+<button mat-icon-button [routerLink] = "'/books'">
+    <mat-icon>close</mat-icon>
+</button>
+
 <form class="example-container" *ngIf="author$ | async as author">
 
   <mat-form-field appearance="standard">
@@ -10,10 +14,15 @@
     <input matInput disabled value="{{author.name}}">
   </mat-form-field>
 
-    <mat-nav-list>
-      <mat-list-item *ngFor="let book of author.books">
-        <a matLine href="books\{{ book.id }}">{{ book.name }}</a>
-      </mat-list-item>
-    </mat-nav-list>
-  
+<mat-card>
+    <mat-card-content>
+      <mat-nav-list>
+          <mat-list-item *ngFor="let book of author.books">
+            <a matLine href="books\{{ book.id }}">{{ book.name }}</a>
+          </mat-list-item>
+        </mat-nav-list>
+    </mat-card-content>
+</mat-card>
 </form>
+
+<mat-divider></mat-divider>

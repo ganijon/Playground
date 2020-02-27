@@ -13,6 +13,7 @@ const AUTHORS_QUERY = gql`
       id
       name
       books {
+        id
         name
       }
     }
@@ -23,8 +24,7 @@ const AUTHORS_QUERY = gql`
   providedIn: 'root'
 })
 export class AuthorService {
-  authors$: Observable<Author[]>;
-
+  private authors$: Observable<Author[]>;
   private query: QueryRef<Author[]>;
 
   constructor(private apollo: Apollo) {
@@ -36,6 +36,11 @@ export class AuthorService {
     this.authors$ = this.query.valueChanges.pipe(
       map(result => result.data && result.data['authors'])
     );
+  }
+
+  getAuthors() {
+    this.query.refetch();
+    return this.authors$.pipe();
   }
 
   getAuthor(authorId: string) {

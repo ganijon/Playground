@@ -17,7 +17,7 @@ export class AuthorListComponent implements OnInit {
   constructor(private service: AuthorService) {}
 
   ngOnInit() {
-    this.authors$ = this.service.authors$;
+    this.authors$ = this.service.getAuthors();
   }
 
   onSearch() {
