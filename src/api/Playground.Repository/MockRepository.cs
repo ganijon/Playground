@@ -6,10 +6,28 @@ namespace Playground.Repository
 {
     public class MockRepository : IRepository
     {
+        public IQueryable<Book> Books =>
+            (
+                from book in mockBooks
+                join author in mockAuthors on book.AuthorId equals author.Id
+                join publisher in mockPublishers on book.PublisherId equals publisher.Id
+                select new Book
+                {
+                    Id = book.Id,
+                    Name = book.Name,
+                    Genre = book.Genre,
+                    AuthorId = author.Id,
+                    Author = author,
+                    PublisherId = publisher.Id,
+                    Publisher = publisher
+                }
+            )
+            .AsQueryable();
+
         public IQueryable<Author> Authors =>
             (
                 from author in mockAuthors
-                join book in mockBooks on author.Id equals book.AuthorId into books
+                join book in Books on author.Id equals book.AuthorId into books
                 select new Author
                 {
                     Id = author.Id,
@@ -22,7 +40,7 @@ namespace Playground.Repository
         public IQueryable<Publisher> Publishers =>
             (
                 from publisher in mockPublishers
-                join book in mockBooks on publisher.Id equals book.PublisherId into books
+                join book in Books on publisher.Id equals book.PublisherId into books
                 select new Publisher
                 {
                     Id = publisher.Id,
@@ -32,21 +50,6 @@ namespace Playground.Repository
             )
             .AsQueryable();
 
-        public IQueryable<Book> Books =>
-            (
-                from book in mockBooks
-                join author in mockAuthors on book.AuthorId equals author.Id
-                join publisher in mockPublishers on book.PublisherId equals publisher.Id
-                select new Book
-                {
-                    Id = book.Id,
-                    Name = book.Name,
-                    Genre = book.Genre,
-                    Author = author,
-                    Publisher = publisher
-                }
-            )
-            .AsQueryable();
 
         public Author Add(Author author)
         {
