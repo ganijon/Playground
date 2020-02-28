@@ -115,7 +115,7 @@ namespace Playground.Api {
             app.UseGraphQL<TheSchema> ("/graphql");
 
             // Enable developer UI
-            app.UseGraphiQLServer (new GraphiQLOptions { GraphiQLPath = "/ui" });
+            app.UseGraphiQLServer (new GraphiQLOptions { GraphiQLPath = "/graphql-ui" });
 
             app.UseRouting ();
 
